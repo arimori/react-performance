@@ -6,12 +6,14 @@ interface ProcustItemProps {
     price: number;
     title: string;
   }
+  onAddToWishList: (id: number) => void;
 }
 
-function ProductItemComponent({ product }: ProcustItemProps) {
+function ProductItemComponent({ product, onAddToWishList }: ProcustItemProps) {
   return (
     <div>
       {product.title} - <strong>{product.price}</strong>
+      <button onClick={() => onAddToWishList(product.id)}>Add to wishlist</button>
     </div>
   )
 }
