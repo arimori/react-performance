@@ -5,6 +5,7 @@ interface ProcustItemProps {
     id: number;
     price: number;
     title: string;
+    priceFormatted: string;
   }
   onAddToWishList: (id: number) => void;
 }

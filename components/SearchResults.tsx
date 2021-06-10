@@ -2,20 +2,22 @@ import { useMemo } from "react";
 import { ProductItem } from "./ProductItem";
 
 interface SearchResultsProps {
+  totalPrice: number;
   results: Array<{
     id: number;
     price: number;
     title: string;
+    priceFormatted: string;
   }>
   onAddToWishList: (id: number) => void;
 }
 
-export function SearchResults({ results, onAddToWishList }: SearchResultsProps) {
-  const totalPrice = useMemo(() => {
-    results.reduce((total, product) => {
-      return total + product.price;
-    }, 0)
-  }, [results]);
+export function SearchResults({ results, onAddToWishList, totalPrice }: SearchResultsProps) {
+  // const totalPrice = useMemo(() => {
+  //   return results.reduce((total, product) => {
+  //     return total + product.price;
+  //   }, 0)
+  // }, [results]);
 
   return (
     <div>
@@ -23,9 +25,9 @@ export function SearchResults({ results, onAddToWishList }: SearchResultsProps) 
 
       {results.map(product => {
         return (
-          <ProductItem 
-            key={product.id} 
-            product={product} 
+          <ProductItem
+            key={product.id}
+            product={product}
             onAddToWishList={onAddToWishList}
           />
         );
@@ -47,5 +49,5 @@ export function SearchResults({ results, onAddToWishList }: SearchResultsProps) 
 **/
 
 /** useCallback(): memorizar uma função
- * 1. 
+ * 1.
 **/
